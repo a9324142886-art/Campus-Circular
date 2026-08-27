@@ -1,121 +1,96 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
 import './App.css'
 
+const stats = [
+  { value: '12k+', label: 'students connected' },
+  { value: '2.4k', label: 'items shared this month' },
+  { value: '98%', label: 'return rate' },
+]
+
+const features = [
+  {
+    title: 'Borrow essentials',
+    text: 'Find calculators, chargers, books, and dorm gear from students nearby.',
+  },
+  {
+    title: 'Share with trust',
+    text: 'List items securely, set pickup windows, and build a campus reputation.',
+  },
+  {
+    title: 'Save money',
+    text: 'Reduce waste and costs by reusing what your campus already has.',
+  },
+]
+
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <div className="campus-shell">
+      <header className="topbar">
+        <div className="brand-wrap">
+          <div className="brand-mark">C</div>
+          <span>Campus Circular</span>
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
+        <nav className="nav">
+          <a href="#discover">Discover</a>
+          <a href="#how-it-works">How it works</a>
+          <a href="#about">About</a>
+        </nav>
+        <button className="nav-button" type="button">
+          Join now
         </button>
-      </section>
+      </header>
 
-      <div className="ticks"></div>
+      <main className="hero-section">
+        <div className="hero-copy">
+          <span className="eyebrow">Built for campus life</span>
+          <h1>Share what you have. Borrow what you need.</h1>
+          <p>
+            Campus Circular helps students borrow and lend everyday essentials,
+            saving money, reducing waste, and making campus life easier.
+          </p>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+          <div className="cta-row">
+            <button type="button" className="primary-btn">
+              Explore resources
+            </button>
+            <button type="button" className="secondary-btn">
+              List an item
+            </button>
+          </div>
+
+          <div className="stats-row">
+            {stats.map((stat) => (
+              <div key={stat.label} className="stat-box">
+                <strong>{stat.value}</strong>
+                <span>{stat.label}</span>
+              </div>
+            ))}
+          </div>
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+        <div className="showcase" aria-label="Platform preview">
+          <div className="card card-top">
+            <div className="icon-box">
+              <span className="atom" aria-hidden="true" />
+            </div>
+          </div>
+          <div className="card card-bottom">
+            <div className="mini-icon" aria-hidden="true">
+              <span className="refresh" />
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <section className="feature-section" id="how-it-works">
+        {features.map((feature) => (
+          <article key={feature.title} className="feature-card">
+            <div className="feature-icon" aria-hidden="true" />
+            <h2>{feature.title}</h2>
+            <p>{feature.text}</p>
+          </article>
+        ))}
+      </section>
+    </div>
   )
 }
 
